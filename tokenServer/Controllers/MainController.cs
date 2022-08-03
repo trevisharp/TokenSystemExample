@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace tokenServer.Controllers;
 
 [ApiController]
-[Route("main")]
+[Route("api")]
 public class MainController : ControllerBase
 {
     [HttpPost("connect")]
@@ -27,6 +28,7 @@ public class MainController : ControllerBase
         }
     }
 
+    [JwtAuthorize]
     [HttpPost("changename")]
     public object ChangeName(
         [FromServices]CryptoService crypto,
