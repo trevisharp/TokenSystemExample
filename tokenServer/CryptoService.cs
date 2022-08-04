@@ -94,6 +94,9 @@ public class CryptoService
     {
         int len = base64str.Length;
         int last32BytesSize = len % 4;
+        if (last32BytesSize == 0)
+            return base64str;
+        
         int missingEquals = 4 - last32BytesSize;
         while (missingEquals > 0)
         {

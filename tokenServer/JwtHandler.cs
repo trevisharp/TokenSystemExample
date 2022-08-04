@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using System.Text.Json;
 
 public class JwtHandler : AuthorizationHandler<JwtRequirement>
 {
@@ -6,11 +7,10 @@ public class JwtHandler : AuthorizationHandler<JwtRequirement>
         AuthorizationHandlerContext context, 
         JwtRequirement requirement)
     {
-        if (context.Resource is DefaultHttpContext httpContext)
+        if (context.Resource is HttpContext httpContext)
         {
             var request = httpContext.Request;
-            var reader = new StreamReader(request.Body);
-            string body = await reader.ReadToEndAsync();
+            var token = request.Headers["token"];
             
         }
         context.Succeed(requirement);

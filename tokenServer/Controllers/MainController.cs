@@ -28,7 +28,6 @@ public class MainController : ControllerBase
         }
     }
 
-    [JwtAuthorize]
     [HttpPost("changename")]
     public object ChangeName(
         [FromServices]CryptoService crypto,

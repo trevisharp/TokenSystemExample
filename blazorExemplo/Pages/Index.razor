@@ -1,9 +1,11 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Jwt Test</PageTitle>
 
-<h1>Hello, world!</h1>
+<MatTextField @bind-Value="name"
+    Label="Nome" Icon="contacts"></MatTextField>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code
+{
+    string name;
+}
